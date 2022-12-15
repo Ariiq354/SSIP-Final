@@ -4,7 +4,7 @@
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-        <img src="<?= base_url('vendor/Green'); ?>/assets/img/logo.png" width="70px" height="70px">
+        <img src="<?= base_url('assets/Green'); ?>/assets/img/logo.png" width="70px" height="70px">
         <h1 class="logo me-auto"><a href="index.html">Stana Indonesia</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
 
