@@ -18,8 +18,11 @@ class Dashboard extends CI_Controller
         $this->load->view('dashboard/footer');
     }
 
-    public function disaster($id)
+    public function getDisaster()
     {
-        $data['disaster'] = $this->region->disaster($id);
+        $id = $this->input->post('id');
+        $data['disaster'] = $this->dashboard->disaster($id);
+
+        echo json_encode($data);
     }
 }
