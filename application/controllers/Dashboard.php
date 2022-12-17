@@ -25,4 +25,9 @@ class Dashboard extends CI_Controller
 
         echo json_encode($data);
     }
+
+    public function view()
+    {
+        $this->load->view('viewer/disaster_dashboard.php');
+    }
 }

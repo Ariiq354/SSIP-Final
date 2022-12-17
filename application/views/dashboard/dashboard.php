@@ -28,42 +28,6 @@
         <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
-<<<<<<< HEAD
-
-            <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url(<?= base_url('assets/Green/'); ?>assets/img/slide/bencana1.jpg)">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown"><?= $recent[0]['name']; ?>, <?= $recent[0]['reg']; ?></h2>
-                        <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[0]['date']; ?>, Korban: <?= $recent[0]['casualty']; ?></p>
-                        <a href="<?= base_url('Disaster'); ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item" style="background-image: url(<?= base_url('assets/Green/'); ?>assets/img/slide/bencana2.png)">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown"><?= $recent[1]['name']; ?>, <?= $recent[1]['reg']; ?></h2>
-                        <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[1]['date']; ?>, Korban: <?= $recent[1]['casualty']; ?></p>
-                        <a href="<?= base_url('viewer'); ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url(<?= base_url('assets/Green/'); ?>assets/img/slide/bencana3.jpeg)">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown"><?= $recent[2]['name']; ?>, <?= $recent[2]['reg']; ?></h2>
-                        <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[2]['date']; ?>, Korban: <?= $recent[2]['casualty']; ?></p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
-                    </div>
-                </div>
-            </div>
-
-=======
             <?php for ($i = 0; $i < 3; $i++) : ?>
                 <!-- Slide 1 -->
                 <div class="carousel-item <?php if ($i == 0) {
@@ -73,12 +37,11 @@
                         <div class="container">
                             <h2 class="animate__animated animate__fadeInDown"><?= $recent[$i]['name']; ?>, <?= $recent[$i]['reg']; ?></h2>
                             <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[$i]['date']; ?>, Korban: <?= $recent[$i]['casualty']; ?></p>
-                            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
+                            <a href="<?= base_url('dashboard/view'); ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
                         </div>
                     </div>
                 </div>
             <?php endfor; ?>
->>>>>>> 2926747fb386b5cde46d148484010e88f08f34e5
         </div>
 
         <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
