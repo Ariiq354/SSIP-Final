@@ -31,7 +31,7 @@
         <div class="carousel-inner" role="listbox">
 
             <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg)">
+            <div class="carousel-item active" style="background-image: url(<?= base_url('assets/Green/'); ?>assets/img/slide/bencana1.jpg)">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Recent Disaster 1 (id bencana terakhir)</h2>
@@ -42,7 +42,7 @@
             </div>
 
             <!-- Slide 2 -->
-            <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg)">
+            <div class="carousel-item" style="background-image: url(<?= base_url('assets/Green/'); ?>assets/img/slide/bencana2.png)">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Recent bencana 2 (id bencana terakhir-2)</h2>
@@ -53,7 +53,7 @@
             </div>
 
             <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg)">
+            <div class="carousel-item" style="background-image: url(<?= base_url('assets/Green/'); ?>assets/img/slide/bencana3.jpeg)">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Recent bencana 3 (id bencana terakhir-3)</h2>
@@ -251,7 +251,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="member">
-                        <img src="assets/img/team/team-1.jpg" alt="gambar partner">
+                        <img src="<?= base_url('assets/Green/'); ?>assets/img/team/team-1.jpg" alt="gambar partner">
                         <h4>Walter White</h4>
                         <span>Chief Executive Officer</span>
                         <p>
@@ -268,7 +268,7 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="member">
-                        <img src="assets/img/team/team-2.jpg" alt="gambar partner">
+                        <img src="<?= base_url('assets/Green/'); ?>assets/img/team/team-2.jpg" alt="gambar partner">
                         <h4>Sarah Jhinson</h4>
                         <span>Product Manager</span>
                         <p>
@@ -285,7 +285,7 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="member">
-                        <img src="assets/img/team/team-3.jpg" alt="gambar partner">
+                        <img src="<?= base_url('assets/Green/'); ?>assets/img/team/team-3.jpg" alt="gambar partner">
                         <h4>William Anderson</h4>
                         <span>CTO</span>
                         <p>
