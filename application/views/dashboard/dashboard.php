@@ -35,7 +35,7 @@
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown"><?= $recent[0]['name']; ?>, <?= $recent[0]['reg']; ?></h2>
                         <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[0]['date']; ?>, Korban: <?= $recent[0]['casualty']; ?></p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
+                        <a href="<?= base_url('Disaster'); ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown"><?= $recent[1]['name']; ?>, <?= $recent[1]['reg']; ?></h2>
                         <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[1]['date']; ?>, Korban: <?= $recent[1]['casualty']; ?></p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
+                        <a href="<?= base_url('viewer'); ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
                     </div>
                 </div>
             </div>
