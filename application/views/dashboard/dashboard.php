@@ -1,5 +1,4 @@
 <?php $this->view('dashboard/info') ?>
-
 <!-- ======= Header ======= -->
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
@@ -12,7 +11,7 @@
             <ul>
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="#services">Bencana Sebelumnya</a></li>
-                <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                 <li><a class="getstarted scrollto" href="<?= base_url('Auth'); ?>">Login</a></li>
             </ul>
@@ -34,8 +33,8 @@
             <div class="carousel-item active" style="background-image: url(<?= base_url('assets/Green/'); ?>assets/img/slide/bencana1.jpg)">
                 <div class="carousel-container">
                     <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Recent Disaster 1 (id bencana terakhir)</h2>
-                        <p class="animate__animated animate__fadeInUp">Disaster Description, Date</p>
+                        <h2 class="animate__animated animate__fadeInDown"><?= $recent[0]['name']; ?>, <?= $recent[0]['reg']; ?></h2>
+                        <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[0]['date']; ?>, Korban: <?= $recent[0]['casualty']; ?></p>
                         <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
                     </div>
                 </div>
@@ -45,8 +44,8 @@
             <div class="carousel-item" style="background-image: url(<?= base_url('assets/Green/'); ?>assets/img/slide/bencana2.png)">
                 <div class="carousel-container">
                     <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Recent bencana 2 (id bencana terakhir-2)</h2>
-                        <p class="animate__animated animate__fadeInUp">Disaster Description, Date</p>
+                        <h2 class="animate__animated animate__fadeInDown"><?= $recent[1]['name']; ?>, <?= $recent[1]['reg']; ?></h2>
+                        <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[1]['date']; ?>, Korban: <?= $recent[1]['casualty']; ?></p>
                         <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
                     </div>
                 </div>
@@ -56,8 +55,8 @@
             <div class="carousel-item" style="background-image: url(<?= base_url('assets/Green/'); ?>assets/img/slide/bencana3.jpeg)">
                 <div class="carousel-container">
                     <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Recent bencana 3 (id bencana terakhir-3)</h2>
-                        <p class="animate__animated animate__fadeInUp">Disaster Description, Date</p>
+                        <h2 class="animate__animated animate__fadeInDown"><?= $recent[2]['name']; ?>, <?= $recent[2]['reg']; ?></h2>
+                        <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[2]['date']; ?>, Korban: <?= $recent[2]['casualty']; ?></p>
                         <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
                     </div>
                 </div>
@@ -91,10 +90,9 @@
                         Provinsi
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Aceh</a></li>
-                        <li><a class="dropdown-item" href="#">Sumatra Utara</a></li>
-                        <li><a class="dropdown-item" href="#">Sumatre Barat</a></li>
-                        <li><a class="dropdown-item" href="#">Privinsi lain (id provinse)</a></li>
+                        <?php foreach ($province as $p) : ?>
+                            <li><a class="dropdown-item" href="#"><?= $p['name']; ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -240,7 +238,7 @@
 
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
+    <!-- <section id="team" class="team section-bg">
         <div class="container">
 
             <div class="section-title">
@@ -303,7 +301,7 @@
             </div>
 
         </div>
-    </section><!-- End Team Section -->
+    </section>End Team Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
