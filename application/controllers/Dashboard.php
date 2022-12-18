@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Dashboard_model', 'dashboard');
+        $this->load->model('Disaster_model', 'disaster');
     }
 
     public function index()
@@ -26,8 +27,16 @@ class Dashboard extends CI_Controller
         echo json_encode($data);
     }
 
-    public function view()
+    public function view($id)
     {
-        $this->load->view('viewer/disaster_dashboard.php');
+        $disaster = $id;
+        $data['victim'] = $this->disaster->victim($id);
+        $this->load->view('viewer/disaster_dashboard', $data);
+    }
+    
+    public function victim()
+    {
+        
+        $id = $this->input->post('id');
     }
 }

@@ -213,50 +213,32 @@
                                         <table class="table table-borderless datatable">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
+                                                    <th scope="col">No.</th>
                                                     <th scope="col">Nama</th>
                                                     <th scope="col">NIK</th>
                                                     <th scope="col">Kelamin</th>
                                                     <th scope="col">Status</th>
+                                                    <th scope="col">Detail</th>
                                                 </tr>
                                             </thead>
+                                            <?php 
+                                            $i=1;
+                                            foreach ($victim as $v):
+                                                echo "<td>" . $i . "</td>";
+                                                echo "<td>" . $v['name'] . "</td>";
+                                                echo "<td>" . $v['nik'] . "</td>";
+                                                echo "<td>" . $v['gender'] . "</td>";
+                                                echo "<td>" . $v['status'] . "</td>";
+                                                echo "<td>"  . "<a class='btn btn-primary' href='#modal'><i class='bi bi-exclamation-square'></i> \t Detail</a>". "</td>";
+                                                ?>
                                             <tbody>
                                                 <tr>
-                                                    <th scope="row"><a href="#">#2457 (nomer urut korban)</a></th>
-                                                    <td>(nama korban)</td>
-                                                    <td><a href="#" class="text-primary">(NIK korban)</a></td>
-                                                    <td>(kelamin korban)</td>
-                                                    <td><span class="badge bg-success">(Status korban)</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><a href="#">#2147 (nomer urut korban)</a></th>
-                                                    <td>(nama korban)</td>
-                                                    <td><a href="#" class="text-primary">(NIK korban)</a></td>
-                                                    <td>(kelamin korban)</td>
-                                                    <td><span class="badge bg-warning">(Status korban)</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><a href="#">#2049 (nomer urut korban)</a></th>
-                                                    <td>(nama korban)</td>
-                                                    <td><a href="#" class="text-primary">(NIK korban)</a></td>
-                                                    <td>(kelamin korban)</td>
-                                                    <td><span class="badge bg-success">(Status korban)</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><a href="#">#2644 (nomer urut korban)</a></th>
-                                                    <td>(nama korban)</td>
-                                                    <td><a href="#" class="text-primary">(NIK korban)</a></td>
-                                                    <td>(kelamin korban)</td>
-                                                    <td><span class="badge bg-danger">(Status korban)</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><a href="#">#2644 (nomer urut korban)</a></th>
-                                                    <td>(nama korban)</td>
-                                                    <td><a href="#" class="text-primary">(NIK korban)</a></td>
-                                                    <td>(kelamin korban)</td>
-                                                    <td><span class="badge bg-success">(Status korban)</span></td>
+                                                    <th scope="row"><a href="#"><?php ?></a></th>
                                                 </tr>
                                             </tbody>
+                                            <?php
+                                        $i++;
+                                        endforeach; ?>
                                         </table>
 
                                     </div>

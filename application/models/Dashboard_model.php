@@ -29,7 +29,7 @@ class Dashboard_model extends CI_Model
 
     public function recentDisaster()
     {
-        $this->db->select('a.name as name, date, casualty, b.name as reg');
+        $this->db->select('a.name as name, date, casualty, b.name as reg, a.id_disaster as id_disaster');
         $this->db->from('disaster a');
         $this->db->join('region b', 'a.id_region = b.id_region');
         $this->db->order_by('date', 'desc');
