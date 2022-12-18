@@ -40,17 +40,17 @@
                 success: function(resp) {
                     var logo;
                     $.each(resp['disaster'], function(index, item) {
-                        if (item['name'] == 'Banjir') {
+                        if (item['name'] == 'Flood') {
                             logo = "bx bx-water";
-                        } else if (item['name'] == "Kebakaran") {
+                        } else if (item['name'] == "Fire") {
                             logo = "bx bxs-hot";
-                        } else if (item['name'] == "Tanah Longsor") {
+                        } else if (item['name'] == "Landslide") {
                             logo = "bx bx-pulse";
-                        } else if (item['name'] == "Gempa") {
+                        } else if (item['name'] == "Earthquake") {
                             logo = "bx bx-bullseye";
-                        } else if (item['name'] == "Gunung Meletus") {
+                        } else if (item['name'] == "Volcano") {
                             logo = "bx bxs-landscape";
-                        } else if (item['name'] == "Angin Puyuh") {
+                        } else if (item['name'] == "Tornado") {
                             logo = "bx bxl-jquery";
                         }
                         $(".place").append(`<div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 feed" data-aos="zoom-in" data-aos-delay="100">
@@ -62,7 +62,7 @@
                                     <i class="` + logo + `"></i>
                                 </div>
                                 <h4>` + item['name'] + `</a></h4>
-                                <p>Tanggal: ` + item['date'] + `, Korban: ` + item['casualty'] + `</p>
+                                <p>Date: ` + item['date'] + `, Casualty: ` + item['casualty'] + `</p>
                             </div>
                         </div>`);
                     });

@@ -36,7 +36,7 @@
                     <div class="carousel-container">
                         <div class="container">
                             <h2 class="animate__animated animate__fadeInDown"><?= $recent[$i]['name']; ?>, <?= $recent[$i]['reg']; ?></h2>
-                            <p class="animate__animated animate__fadeInUp">Tanggal: <?= $recent[$i]['date']; ?>, Korban: <?= $recent[$i]['casualty']; ?></p>
+                            <p class="animate__animated animate__fadeInUp">Date: <?= $recent[$i]['date']; ?>, Casualty: <?= $recent[$i]['casualty']; ?></p>
                             <a href="<?= base_url('dashboard/view'); ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
                         </div>
                     </div>
@@ -61,12 +61,12 @@
         <div class="container">
 
             <div class="section-title">
-                <h2>Bencana Sebelumnya</h2>
+                <h2>Previous Diaster</h2>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Provinsi
+                        Province
                     </button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="max-height: 200px; overflow:auto;">
                         <?php foreach ($province as $p) : ?>
                             <li id="<?= $p['id_region']; ?>"><a class="dropdown-item"><?= $p['name']; ?></a></li>
                         <?php endforeach; ?>

@@ -32,6 +32,13 @@
         .title {
             color: yellow;
         }
+
+        .invalid {
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: .875em;
+            color: #dc3545;
+        }
     </style>
 </head>
 

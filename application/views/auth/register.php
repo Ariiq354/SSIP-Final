@@ -21,34 +21,44 @@
                                     <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
                                     <p class="text-center small">Enter your personal details to create account</p>
                                 </div>
-
-                                <form class="row g-3 needs-validation" novalidate>
+                                <form class="row g-3 needs-validation" method="POST" action="<?= base_url('auth/register'); ?>" enctype="multipart/form-data" novalidate>
                                     <div class="col-12">
-                                        <label for="yourName" class="form-label">Your Name</label>
-                                        <input type="text" name="name" class="form-control" id="yourName" required>
-                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                        <label for="yourName" class="form-label">Family ID</label>
+                                        <input type="text" name="familyId" class="form-control" id="familyId" required>
+                                        <div class="invalid-feedback">Please, enter your family id!</div>
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="yourEmail" class="form-label">Your Email</label>
-                                        <input type="email" name="email" class="form-control" id="yourEmail" required>
-                                        <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                        <label for="yourEmail" class="form-label">Provinsi</label>
+                                        <select class="form-select" name="selectProvince" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                                            <?php foreach ($province as $p) : ?>
+                                                <option value="<?= $p['id_region']; ?>"><?= $p['name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
 
                                     <div class="col-12">
                                         <label for="yourUsername" class="form-label">Username</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                            <input type="text" name="username" class="form-control" id="yourUsername" required>
+                                            <input type="text" name="username" class="form-control" id="username" required>
                                             <div class="invalid-feedback">Please choose a username.</div>
+                                            <?= form_error('name', '<div class="invalid">', '</div>') ?>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
+                                        <label for="yourPassword" class="form-label">Family Identity Card</label>
+                                        <input type="file" name="picture" class="form-control" id="picture" required>
+                                        <div class="invalid-feedback">Please upload your family identity card!</div>
+                                    </div>
+
+                                    <div class="col-12">
                                         <label for="yourPassword" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                        <input type="password" name="password1" class="form-control" id="password1" required>
                                         <div class="invalid-feedback">Please enter your password!</div>
                                     </div>
+
                                     <div class="col-12">
                                         <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                     </div>
