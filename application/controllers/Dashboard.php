@@ -29,14 +29,11 @@ class Dashboard extends CI_Controller
 
     public function view($id)
     {
-        $disaster = $id;
+        $data['disaster'] = $this->disaster->disaster($id);
         $data['victim'] = $this->disaster->victim($id);
+        $data['hidup'] = $this->disaster->report($id, 0);
+        $data['hilang'] = $this->disaster->report($id, 1);
+        $data['meninggal'] = $this->disaster->report($id, 2);
         $this->load->view('viewer/disaster_dashboard', $data);
-    }
-    
-    public function victim()
-    {
-        
-        $id = $this->input->post('id');
     }
 }

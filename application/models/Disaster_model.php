@@ -17,4 +17,19 @@ class Disaster_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function disaster($idDisaster)
+    {
+        $this->db->select('*, disaster.name as disasname, region.name as reg');
+        $this->db->from('disaster');
+        $this->db->join('region', 'disaster.id_region = region.id_region');
+        $this->db->where('id_disaster', $idDisaster);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    public function report($idDisaster, $idStatus)
+    {
+        $sql = "SELECT COUNT(status) as count FROM user WHERE id_disaster = '" . $idDisaster . "' and status = '" . $idStatus . "'";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
 }

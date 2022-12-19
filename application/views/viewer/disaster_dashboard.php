@@ -13,6 +13,7 @@
     <link href=" <?= base_url('assets/NiceAdmin'); ?> /assets/img/favicon.png" rel="icon">
     <link href=" <?= base_url('assets/NiceAdmin'); ?>/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -42,11 +43,11 @@
     <main id="main" class="main col-lg-11">
 
         <div class="justify-content-center">
-            <h1>Bencana 1</h1>
+            <h1><?= $disaster['disasname'] ?></h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item">Tempat</li>
-                    <li class="breadcrumb-item">Tanggal</li>
+                    <li class="breadcrumb-item"><?= $disaster['reg'] ?></li>
+                    <li class="breadcrumb-item"><?= $disaster['date'] ?></li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -61,7 +62,6 @@
                         <!-- Sales Card -->
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card sales-card">
-
                                 <div class="card-body">
                                     <h5 class="card-title">Korban Selamat</h5>
 
@@ -70,7 +70,7 @@
                                             <i class="bi bi-person-check"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>7812</h6>
+                                            <h6><?= $hidup['count'] ?></h6>
                                             <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                                         </div>
@@ -94,7 +94,7 @@
                                             <i class="bi bi-exclamation-circle"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>3264</h6>
+                                            <h6><?= $hilang['count'] ?></h6>
                                             <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                                         </div>
@@ -117,7 +117,7 @@
                                             <i class="bi bi-person-dash"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>1244</h6>
+                                            <h6> <?= $meninggal['count'] ?></h6>
                                             <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
 
                                         </div>
@@ -175,18 +175,18 @@
                                                             },
                                                             data: [{
 
-                                                                    value: 3264,
+                                                                    value: <?= $hilang['count'] ?>,
                                                                     name: 'Hilang'
 
                                                                 },
                                                                 {
-                                                                    value: 7812,
+                                                                    value: <?= $hidup['count'] ?>,
                                                                     name: 'Selamat'
                                                                 },
 
                                                                 {
 
-                                                                    value: 1244,
+                                                                    value: <?= $meninggal['count'] ?>,
                                                                     name: 'Meninggal'
                                                                 }
 
@@ -210,7 +210,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">DATA KORBAN</h5>
 
-                                        <table class="table table-borderless datatable">
+                                        <table class="table table-borderless DataTable" id="example">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No.</th>
@@ -221,24 +221,34 @@
                                                     <th scope="col">Detail</th>
                                                 </tr>
                                             </thead>
-                                            <?php 
-                                            $i=1;
-                                            foreach ($victim as $v):
-                                                echo "<td>" . $i . "</td>";
-                                                echo "<td>" . $v['name'] . "</td>";
-                                                echo "<td>" . $v['nik'] . "</td>";
-                                                echo "<td>" . $v['gender'] . "</td>";
-                                                echo "<td>" . $v['status'] . "</td>";
-                                                echo "<td>"  . "<a class='btn btn-primary' href='#modal'><i class='bi bi-exclamation-square'></i> \t Detail</a>". "</td>";
-                                                ?>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row"><a href="#"><?php ?></a></th>
-                                                </tr>
+                                                <?php
+                                                $i = 1;
+
+                                                foreach ($victim as $v) :
+                                                    if ($v['status'] == 0) {
+                                                        $haha = 'Hidup';
+                                                    } else if ($v['status'] == 1) {
+                                                        $haha = 'Hilang';
+                                                    }
+                                                    if ($v['status'] == 2) {
+                                                        $haha = 'Meninggal';
+                                                    }
+
+                                                ?>
+                                                    <tr>
+                                                        <th scope="row"><?= $i ?></th>
+                                                        <td> <?= $v['name'] ?></td>
+                                                        <td> <?= $v['nik']  ?> </td>
+                                                        <td> <?= $v['gender'] ?> </td>
+                                                        <td> <?= $haha ?> </td>
+                                                        <td> <button class='btn btn-primary' id="button" data-bs-toggle='modal' data-bs-target='#exampleModal<?= $v['nik'] ?>'><i class='bi bi-exclamation-square'></i> Detail</button></td>
+                                                    <?php
+                                                    $i++;
+                                                endforeach; ?>
+                                                    </tr>
                                             </tbody>
-                                            <?php
-                                        $i++;
-                                        endforeach; ?>
+
                                         </table>
 
                                     </div>
@@ -251,6 +261,40 @@
 
                 </div>
         </section>
+        <!-- Modal -->
+        <?php $no = 0 ?>
+        <?php foreach ($victim as $vict) :  ?>
+            <div class="modal fade" id="exampleModal<?= $vict['nik'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><?= $vict['name'] ?> Detail</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="col-md-8">
+                                <?= $vict['name'] ?> photo
+                                <br>
+                                <br>
+                            </div>
+                            <div>
+                                <p>Name&#9; : <?= $vict['name'] ?></p>
+                                <p>NIK&#9; : <?= $vict['nik'] ?></p>
+                                <p>Date of Birth&#9; : <?= $vict['dob'] ?></p>
+                                <p>Gender&#9; : <?= $vict['gender'] ?></p>
+                                <p>Religion&#9; : <?= $vict['religion'] ?></p>
+                                <p>Married Status&#9; : <?= $vict['married_status'] ?></p>
+                                <p>Contact&#9; : <?= $vict['contact'] ?></p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
 
     </main><!-- End #main -->
 
@@ -267,6 +311,19 @@
     <script src="<?= base_url('assets/NiceAdmin'); ?>/assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
+    <!-- Script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            $('#example').DataTable();
+        });
+    </script>
+
+
     <script src="<?= base_url('assets/NiceAdmin'); ?>/assets/js/main.js"></script>
 
 </body>

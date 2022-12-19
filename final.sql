@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2022 at 02:04 AM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.8
+-- Generation Time: Dec 18, 2022 at 12:29 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -147,6 +146,35 @@ INSERT INTO `role` (`id_role`, `name`) VALUES
 (1, 'admin'),
 (2, 'user');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `nik` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `status` varchar(256) NOT NULL,
+  `dob` date NOT NULL,
+  `address` varchar(256) NOT NULL,
+  `religion` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `married_status` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `id_disaster` int(11) NOT NULL,
+  `id_family` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`nik`, `name`, `gender`, `status`, `dob`, `address`, `religion`, `photo`, `married_status`, `contact`, `id_disaster`, `id_family`) VALUES
+(1202100058, 'Jonathan', 'Perempuan', 'Hilang', '2003-04-18', 'Cikarang', 'Katolik', '', 'Belum Menikah', '081351552541', 2, '123123321321'),
+(1202100059, 'Gonshaga', 'Male', 'Dead', '1985-06-29', 'Banda Raya', 'Islam', '', 'Divorced', '081300120069', 1, '123123321321');
+
 --
 -- Indexes for dumped tables
 --
@@ -177,6 +205,14 @@ ALTER TABLE `region`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id_role`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`nik`),
+  ADD KEY `id_disaster` (`id_disaster`),
+  ADD KEY `id_family` (`id_family`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -210,6 +246,12 @@ ALTER TABLE `disaster`
 ALTER TABLE `family`
   ADD CONSTRAINT `family_ibfk_1` FOREIGN KEY (`id_region`) REFERENCES `region` (`id_region`),
   ADD CONSTRAINT `family_ibfk_2` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`);
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_disaster`) REFERENCES `disaster` (`id_disaster`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
