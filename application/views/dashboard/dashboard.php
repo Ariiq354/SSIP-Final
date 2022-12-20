@@ -37,7 +37,7 @@
                         <div class="container">
                             <h2 class="animate__animated animate__fadeInDown"><?= $recent[$i]['name']; ?>, <?= $recent[$i]['reg']; ?></h2>
                             <p class="animate__animated animate__fadeInUp">Date: <?= $recent[$i]['date']; ?>, Casualty: <?= $recent[$i]['casualty']; ?></p>
-                            <a href="<?= base_url('dashboard/view'); ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
+                            <a href="<?= base_url('dashboard/view/'); ?><?= $recent[$i]['id_disaster']?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
                         </div>
                     </div>
                 </div>

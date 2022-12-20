@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Dashboard_model', 'dashboard');
+        $this->load->model('Disaster_model', 'disaster');
     }
 
     public function index()
@@ -26,8 +27,13 @@ class Dashboard extends CI_Controller
         echo json_encode($data);
     }
 
-    public function view()
+    public function view($id)
     {
-        $this->load->view('viewer/disaster_dashboard.php');
+        $data['disaster'] = $this->disaster->disaster($id);
+        $data['victim'] = $this->disaster->victim($id);
+        $data['hidup'] = $this->disaster->report($id, 0);
+        $data['hilang'] = $this->disaster->report($id, 1);
+        $data['meninggal'] = $this->disaster->report($id, 2);
+        $this->load->view('viewer/disaster_dashboard', $data);
     }
 }
