@@ -30,6 +30,8 @@
     <!-- Template Main CSS File -->
     <link href="<?= base_url('assets/NiceAdmin'); ?>/assets/css/style.css" rel="stylesheet">
     <link href="<?= base_url('assets/Green'); ?>/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
 
     <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -40,6 +42,25 @@
 </head>
 
 <body>
+    <header id="header" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <img src="<?= base_url('assets/Green'); ?>/assets/img/logo.png" width="70px" height="70px">
+            <h2 class="logo me-auto" style="font-size: 28px;"><a href="<?= base_url('Dashboard') ?>">Stana Indonesia</a></h2>
+            <!-- Uncomment below if you prefer to use an image logo -->
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="#statistics">Disaster Statistics</a></li>
+                    <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
+                    <li><a class="nav-link scrollto" href="#list">Victim Lists</a></li>
+                    <li><a class="getstarted scrollto" href="<?= base_url('Auth'); ?>">Login</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
     <main id="main" class="main col-lg-11">
 
         <div class="justify-content-center">
@@ -60,7 +81,7 @@
                     <div class="row">
 
                         <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
+                        <div class="col-xxl-4 col-md-6" id="statistics">
                             <div class="card info-card sales-card">
                                 <div class="card-body">
                                     <h5 class="card-title">Korban Selamat</h5>
@@ -71,7 +92,12 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6><?= $hidup['count'] ?></h6>
-                                            <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                            <p>Survivor percantage:
+                                                <?php
+                                                if ($hilang['count'] + $hidup['count'] + $meninggal['count'] != 0) {
+                                                    echo (int)(($hidup['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100);
+                                                }
+                                                ?>%</p>
 
                                         </div>
                                     </div>
@@ -95,8 +121,12 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6><?= $hilang['count'] ?></h6>
-                                            <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+                                            <p>Missing percantage:
+                                                <?php
+                                                if ($hilang['count'] + $hidup['count'] + $meninggal['count'] != 0) {
+                                                    echo (int)(($hilang['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100);
+                                                }
+                                                ?>%</p>
                                         </div>
                                     </div>
                                 </div>
@@ -118,8 +148,12 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6> <?= $meninggal['count'] ?></h6>
-                                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
+                                            <p>Dead percantage:
+                                                <?php
+                                                if ($hilang['count'] + $hidup['count'] + $meninggal['count'] != 0) {
+                                                    echo (int)(($meninggal['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100);
+                                                }
+                                                ?>%</p>
                                         </div>
                                     </div>
 
@@ -195,7 +229,19 @@
                                                     });
                                                 });
                                             </script>
+                                            <div class=" d-flex justify-content-center">
+                                                <div>
 
+                                                    <p>Survivor percantage:
+                                                        <?php
+                                                        if ($hilang['count'] + $hidup['count'] + $meninggal['count'] != 0) {
+                                                            echo (int)(($hidup['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100);
+                                                        }
+                                                        ?>%</p>
+                                                    <p>Missing percantage: <?= (int)(($hilang['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%<br></p>
+                                                    <p>Dead percantage: <?= (int)(($meninggal['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div><!-- End Website Traffic -->
 
@@ -205,7 +251,7 @@
 
                             <!-- Recent Sales -->
                             <div class="col-12">
-                                <div class="card recent-sales overflow-auto">
+                                <div class="card recent-sales overflow-auto" id="list">
 
                                     <div class="card-body">
                                         <h5 class="card-title">DATA KORBAN</h5>
@@ -242,7 +288,10 @@
                                                         <td> <?= $v['nik']  ?> </td>
                                                         <td> <?= $v['gender'] ?> </td>
                                                         <td> <?= $haha ?> </td>
-                                                        <td> <button class='btn btn-primary' id="button" data-bs-toggle='modal' data-bs-target='#exampleModal<?= $v['nik'] ?>'><i class='bi bi-exclamation-square'></i> Detail</button></td>
+                                                        <td> <button class='btn btn-primary' id="button" data-bs-toggle='modal' data-bs-target='#detail<?= $v['nik'] ?>'> Detail</button>
+                                                            <button class='btn btn-danger' id="button" data-bs-toggle='modal' data-bs-target='#report<?= $v['nik'] ?>'><i class='bi bi-exclamation-square'></i> Report</button>
+                                                        </td>
+
                                                     <?php
                                                     $i++;
                                                 endforeach; ?>
@@ -264,7 +313,7 @@
         <!-- Modal -->
         <?php $no = 0 ?>
         <?php foreach ($victim as $vict) :  ?>
-            <div class="modal fade" id="exampleModal<?= $vict['nik'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="detail<?= $vict['nik'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -289,6 +338,50 @@
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+        <!-- Modal -->
+        <?php $nomor = 0 ?>
+        <?php foreach ($victim as $vict) :  ?>
+            <div class="modal fade" id="report<?= $vict['nik'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Report <?= $vict['name'] ?> </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div>
+                                <p>Name&#9; : <?= $vict['name'] ?></p>
+                                <p>NIK&#9; : <?= $vict['nik'] ?></p>
+                            </div>
+                            <form action="<?= base_url('dashboard/report') ?>" method="post" enctype="multipart/form-data">
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="id_disaster" id="subject" value="<?= $disaster['id_disaster'] ?>" hidden>
+                                    <input type="text" class="form-control" name="nik" id="subject" value="<?= $vict['nik'] ?>" hidden>
+                                    <label for="name">Subject</label>
+                                    <input type="text" class="form-control" name="subject" id="subject">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="name">photo</label>
+                                    <input type="file" class="form-control" name="reportphoto" id="subject" required>
+                                </div>
+
+                                <div class="form-group mt-3">
+                                    <label for="name">Message Report</label>
+                                    <textarea class="form-control" name="message" rows="10" required></textarea>
+                                </div>
+                                <div class="my-auto">
+                                    <div class="text-center"><button type="submit">Send Report</button></div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer p-3">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>

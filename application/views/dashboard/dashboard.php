@@ -37,7 +37,7 @@
                         <div class="container">
                             <h2 class="animate__animated animate__fadeInDown"><?= $recent[$i]['name']; ?>, <?= $recent[$i]['reg']; ?></h2>
                             <p class="animate__animated animate__fadeInUp">Date: <?= $recent[$i]['date']; ?>, Casualty: <?= $recent[$i]['casualty']; ?></p>
-                            <a href="<?= base_url('dashboard/view/'); ?><?= $recent[$i]['id_disaster']?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
+                            <a href="<?= base_url('dashboard/view/'); ?><?= $recent[$i]['id_disaster'] ?>" class="btn-get-started animate__animated animate__fadeInUp scrollto">Visit</a>
                         </div>
                     </div>
                 </div>
@@ -102,8 +102,8 @@
         <div class="container">
 
             <div class="section-title">
-                <h2>Contact</h2>
-                <p>Terhubunglah dengan kami</p>
+                <h2>Report Missing Person</h2>
+                <p>Help Inddonesia find missing victims</p>
             </div>
 
             <div class="row">
@@ -137,7 +137,7 @@
                     <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="name">Your Name</label>
+                                <label for="name"></label>
                                 <input type="text" name="name" class="form-control" id="name" required>
                             </div>
                             <div class="form-group col-md-6 mt-3 mt-md-0">

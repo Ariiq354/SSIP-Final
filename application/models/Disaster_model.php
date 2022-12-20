@@ -26,10 +26,14 @@ class Disaster_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
-    public function report($idDisaster, $idStatus)
+    public function victcount($idDisaster, $idStatus)
     {
         $sql = "SELECT COUNT(status) as count FROM user WHERE id_disaster = '" . $idDisaster . "' and status = '" . $idStatus . "'";
         $query = $this->db->query($sql);
         return $query->row_array();
+    }
+    public function addreport($data, $table)
+    {
+        $this->db->insert($table, $data);
     }
 }
