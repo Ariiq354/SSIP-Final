@@ -92,7 +92,12 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6><?= $hidup['count'] ?></h6>
-                                            <p>Survivor percantage: <?= (int)(($hidup['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%</p>
+                                            <p>Survivor percantage:
+                                                <?php
+                                                if ($hilang['count'] + $hidup['count'] + $meninggal['count'] != 0) {
+                                                    echo (int)(($hidup['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100);
+                                                }
+                                                ?>%</p>
 
                                         </div>
                                     </div>
@@ -116,8 +121,12 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6><?= $hilang['count'] ?></h6>
-                                            <p>Missing percantage: <?= (int)(($hilang['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%</p>
-
+                                            <p>Missing percantage:
+                                                <?php
+                                                if ($hilang['count'] + $hidup['count'] + $meninggal['count'] != 0) {
+                                                    echo (int)(($hilang['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100);
+                                                }
+                                                ?>%</p>
                                         </div>
                                     </div>
                                 </div>
@@ -139,8 +148,12 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6> <?= $meninggal['count'] ?></h6>
-                                            <p>Dead percantage: <?= (int)(($meninggal['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%</p>
-
+                                            <p>Dead percantage:
+                                                <?php
+                                                if ($hilang['count'] + $hidup['count'] + $meninggal['count'] != 0) {
+                                                    echo (int)(($meninggal['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100);
+                                                }
+                                                ?>%</p>
                                         </div>
                                     </div>
 
@@ -218,7 +231,13 @@
                                             </script>
                                             <div class=" d-flex justify-content-center">
                                                 <div>
-                                                    <p>Survivor percantage: <?= (int)(($hidup['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%<br></p>
+
+                                                    <p>Survivor percantage:
+                                                        <?php
+                                                        if ($hilang['count'] + $hidup['count'] + $meninggal['count'] != 0) {
+                                                            echo (int)(($hidup['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100);
+                                                        }
+                                                        ?>%</p>
                                                     <p>Missing percantage: <?= (int)(($hilang['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%<br></p>
                                                     <p>Dead percantage: <?= (int)(($meninggal['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%</p>
                                                 </div>
@@ -269,7 +288,10 @@
                                                         <td> <?= $v['nik']  ?> </td>
                                                         <td> <?= $v['gender'] ?> </td>
                                                         <td> <?= $haha ?> </td>
-                                                        <td> <button class='btn btn-primary' id="button" data-bs-toggle='modal' data-bs-target='#exampleModal<?= $v['nik'] ?>'><i class='bi bi-exclamation-square'></i> Detail</button></td>
+                                                        <td> <button class='btn btn-primary' id="button" data-bs-toggle='modal' data-bs-target='#detail<?= $v['nik'] ?>'> Detail</button>
+                                                            <button class='btn btn-danger' id="button" data-bs-toggle='modal' data-bs-target='#report<?= $v['nik'] ?>'><i class='bi bi-exclamation-square'></i> Report</button>
+                                                        </td>
+
                                                     <?php
                                                     $i++;
                                                 endforeach; ?>
@@ -291,7 +313,7 @@
         <!-- Modal -->
         <?php $no = 0 ?>
         <?php foreach ($victim as $vict) :  ?>
-            <div class="modal fade" id="exampleModal<?= $vict['nik'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="detail<?= $vict['nik'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -316,6 +338,50 @@
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+        <!-- Modal -->
+        <?php $nomor = 0 ?>
+        <?php foreach ($victim as $vict) :  ?>
+            <div class="modal fade" id="report<?= $vict['nik'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Report <?= $vict['name'] ?> </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div>
+                                <p>Name&#9; : <?= $vict['name'] ?></p>
+                                <p>NIK&#9; : <?= $vict['nik'] ?></p>
+                            </div>
+                            <form action="<?= base_url('dashboard/report') ?>" method="post" enctype="multipart/form-data">
+                                <div class="form-group mt-3">
+                                    <input type="text" class="form-control" name="id_disaster" id="subject" value="<?= $disaster['id_disaster'] ?>" hidden>
+                                    <input type="text" class="form-control" name="nik" id="subject" value="<?= $vict['nik'] ?>" hidden>
+                                    <label for="name">Subject</label>
+                                    <input type="text" class="form-control" name="subject" id="subject">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="name">photo</label>
+                                    <input type="file" class="form-control" name="reportphoto" id="subject" required>
+                                </div>
+
+                                <div class="form-group mt-3">
+                                    <label for="name">Message Report</label>
+                                    <textarea class="form-control" name="message" rows="10" required></textarea>
+                                </div>
+                                <div class="my-auto">
+                                    <div class="text-center"><button type="submit">Send Report</button></div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer p-3">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
