@@ -30,6 +30,8 @@
     <!-- Template Main CSS File -->
     <link href="<?= base_url('assets/NiceAdmin'); ?>/assets/css/style.css" rel="stylesheet">
     <link href="<?= base_url('assets/Green'); ?>/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
 
     <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -40,6 +42,25 @@
 </head>
 
 <body>
+    <header id="header" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <img src="<?= base_url('assets/Green'); ?>/assets/img/logo.png" width="70px" height="70px">
+            <h2 class="logo me-auto" style="font-size: 28px;"><a href="<?= base_url('Dashboard') ?>">Stana Indonesia</a></h2>
+            <!-- Uncomment below if you prefer to use an image logo -->
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="#statistics">Disaster Statistics</a></li>
+                    <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
+                    <li><a class="nav-link scrollto" href="#list">Victim Lists</a></li>
+                    <li><a class="getstarted scrollto" href="<?= base_url('Auth'); ?>">Login</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
     <main id="main" class="main col-lg-11">
 
         <div class="justify-content-center">
@@ -60,7 +81,7 @@
                     <div class="row">
 
                         <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
+                        <div class="col-xxl-4 col-md-6" id="statistics">
                             <div class="card info-card sales-card">
                                 <div class="card-body">
                                     <h5 class="card-title">Korban Selamat</h5>
@@ -71,7 +92,7 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6><?= $hidup['count'] ?></h6>
-                                            <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                            <p>Survivor percantage: <?= (int)(($hidup['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%</p>
 
                                         </div>
                                     </div>
@@ -95,7 +116,7 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6><?= $hilang['count'] ?></h6>
-                                            <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                            <p>Missing percantage: <?= (int)(($hilang['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%</p>
 
                                         </div>
                                     </div>
@@ -118,7 +139,7 @@
                                         </div>
                                         <div class="ps-3">
                                             <h6> <?= $meninggal['count'] ?></h6>
-                                            <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                                            <p>Dead percantage: <?= (int)(($meninggal['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%</p>
 
                                         </div>
                                     </div>
@@ -195,7 +216,13 @@
                                                     });
                                                 });
                                             </script>
-
+                                            <div class=" d-flex justify-content-center">
+                                                <div>
+                                                    <p>Survivor percantage: <?= (int)(($hidup['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%<br></p>
+                                                    <p>Missing percantage: <?= (int)(($hilang['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%<br></p>
+                                                    <p>Dead percantage: <?= (int)(($meninggal['count'] / ($hilang['count'] + $hidup['count'] + $meninggal['count'])) * 100) ?>%</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div><!-- End Website Traffic -->
 
@@ -205,7 +232,7 @@
 
                             <!-- Recent Sales -->
                             <div class="col-12">
-                                <div class="card recent-sales overflow-auto">
+                                <div class="card recent-sales overflow-auto" id="list">
 
                                     <div class="card-body">
                                         <h5 class="card-title">DATA KORBAN</h5>
