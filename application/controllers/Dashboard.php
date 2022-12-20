@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->model('Dashboard_model', 'dashboard');
         $this->load->model('Disaster_model', 'disaster');
+        $this->load->model('User_model', 'user');
     }
 
     public function index()
@@ -17,6 +18,14 @@ class Dashboard extends CI_Controller
         $this->load->view('dashboard/header');
         $this->load->view('dashboard/dashboard', $data);
         $this->load->view('dashboard/footer');
+    }
+
+    public function getUser()
+    {
+        $id = $this->input->post('id');
+        $result = $this->user->getUserbyId($id);
+
+        echo json_encode($result);
     }
 
     public function getDisaster()
@@ -31,10 +40,12 @@ class Dashboard extends CI_Controller
     {
         $data['disaster'] = $this->disaster->disaster($id);
         $data['victim'] = $this->disaster->victim($id);
-        $data['hidup'] = $this->disaster->victcount($id, 3);
+        $data['hidup'] = $this->disaster->victcount($id, 0);
         $data['hilang'] = $this->disaster->victcount($id, 1);
         $data['meninggal'] = $this->disaster->victcount($id, 2);
+        $this->load->view('template/header');
         $this->load->view('viewer/disaster_dashboard', $data);
+        $this->load->view('template/footer');
     }
 
     public function report()
@@ -56,8 +67,9 @@ class Dashboard extends CI_Controller
             'photo' => $image,
             'subject' => $this->input->post('subject'),
             'description' => $this->input->post('message'),
+            'is_active' => 0,
         );
         $this->db->insert('report', $data);
-        redirect('dashboard');
+        redirect('dashboard/view/' . $this->input->post('id_disaster'));
     }
 }

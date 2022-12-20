@@ -10,12 +10,16 @@
 
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="<?= base_url('assets/NiceAdmin/'); ?>assets/js/main.js"></script>
 
 <script>
     $(document).ready(function() {
+        $('#example').DataTable();
+
         $('#upload_link').on('click', function(e) {
             e.preventDefault();
             $('#upload:hidden').trigger('click');
@@ -207,6 +211,7 @@
 
         $('.photo').click(function() {
             var id = $(this).attr('id')
+            $('.photoImage').remove();
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('admin/getPhoto'); ?>",
@@ -215,7 +220,7 @@
                 },
                 dataType: "JSON",
                 success: function(resp) {
-                    $('.photo').append(`<div class="photoImage">
+                    $('.photoData').append(`<div class="photoImage">
                     <img src="<?= base_url('assets/image/') ?>` + resp['request']['picture'] + `" alt="">
                 </div>`)
                 }
@@ -242,6 +247,101 @@
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('admin/approve'); ?>",
+                data: {
+                    id: id
+                },
+                dataType: "JSON",
+                success: function(resp) {
+                    location.reload();
+                }
+            });
+        })
+
+        $('.distDetail').click(function() {
+            var id = $(this).attr('id');
+            $(".data").remove();
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('dashboard/getUser'); ?>",
+                data: {
+                    id: id
+                },
+                dataType: "JSON",
+                success: function(resp) {
+                    $("#modalData").append(`
+                    <div class="data mb-1"><img style="max-width: 300px;" src="<?= base_url('assets/userImage/'); ?>` + resp['photo'] + `"></div>
+                    <hr class="data">
+                    <div class="data mb-1">ID: ` + resp['nik'] + `</div>
+                    <div class="data mb-1">Name: ` + resp['name'] + `</div>
+                    <div class="data mb-1">Gender: ` + resp['gender'] + `</div>
+                    <div class="data mb-1">Role: ` + resp['role'] + `</div>
+                    <div class="data mb-1">Date of Birth: ` + resp['dob'] + `</div>
+                    <div class="data mb-1">Address: ` + resp['address'] + `</div>
+                    <div class="data mb-1">Religion: ` + resp['religion'] + `</div>
+                    <div class="data mb-1">Status: ` + resp['married_status'] + `</div>
+                    <div class="data mb-1">Contact: ` + resp['contact'] + `</div>`)
+                }
+            });
+        });
+
+        $('.distReport').click(function() {
+            var id = $(this).attr('id');
+            $(".data").remove();
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('dashboard/getUser'); ?>",
+                data: {
+                    id: id
+                },
+                dataType: "JSON",
+                success: function(resp) {
+                    $('.id_disaster').val(resp['id_disaster']);
+                    $('.nik').val(resp['nik']);
+                    $('#nik').append(`<div class="data mb-1">ID: ` + resp['nik'] + `</div>`);
+                    $('#name').append(`<div class="data mb-1">Name: ` + resp['name'] + `</div>`);
+                }
+            });
+        });
+
+        $('.status').on('change', function() {
+            var optionSelected = $(this).find("option:selected")
+            var value = optionSelected.val();
+            var id = optionSelected.attr('id');
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/changeStatus'); ?>",
+                data: {
+                    id: id,
+                    value: value
+                },
+                dataType: "JSON",
+                success: function(resp) {}
+            });
+        })
+
+        $('.photoReport').click(function() {
+            var id = $(this).attr('id')
+            $('.photoReportImage').remove();
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/getPhotoReport'); ?>",
+                data: {
+                    id: id
+                },
+                dataType: "JSON",
+                success: function(resp) {
+                    $('.photoData').append(`<div class="photoReportImage">
+                    <img style="max-width: 500px" src="<?= base_url('assets/reportimage/') ?>` + resp['report']['photo'] + `" alt="">
+                </div>`)
+                }
+            });
+        })
+
+        $('.deleteReport').click(function() {
+            var id = $(this).attr('id')
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/deleteReport'); ?>",
                 data: {
                     id: id
                 },

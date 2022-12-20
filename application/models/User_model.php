@@ -9,6 +9,14 @@ class User_model extends CI_Model
         $this->table = 'family';
     }
 
+    public function getAllUser()
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function getUser($username)
     {
         $this->db->select('*, region.name as reg, region.id_region as id');

@@ -89,13 +89,13 @@
                         <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked>
+                                <input class="form-check-input" type="radio" name="gender" id="gender" value="Male" checked>
                                 <label class="form-check-label">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                                <input class="form-check-input" type="radio" name="gender" id="gender" value="Female">
                                 <label class="form-check-label">
                                     Female
                                 </label>
@@ -197,13 +197,13 @@
                         <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked>
+                                <input class="form-check-input" type="radio" name="gender" id="gender" value="Male" checked>
                                 <label class="form-check-label">
                                     Male
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                                <input class="form-check-input" type="radio" name="gender" id="gender" value="Female">
                                 <label class="form-check-label">
                                     Female
                                 </label>

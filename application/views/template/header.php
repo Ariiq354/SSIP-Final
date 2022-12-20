@@ -9,6 +9,10 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <!-- Data Table -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+
     <!-- Favicons -->
     <link href="<?= base_url('assets/Green/'); ?>assets/img/logo.png" rel="icon">
     <!-- <link href="<?= base_url('assets/Green/'); ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
@@ -28,6 +32,7 @@
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url('assets/NiceAdmin/'); ?>assets/css/style.css" rel="stylesheet">
+    <link href="<?= base_url('assets/Green'); ?>/assets/css/style.css" rel="stylesheet">
     <style>
         .title {
             color: yellow;

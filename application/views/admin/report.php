@@ -4,12 +4,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Request</h1>
+        <h1>Report</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= base_url('user'); ?>">Home</a></li>
                 <li class="breadcrumb-item ">Admin</li>
-                <li class="breadcrumb-item active">Request</li>
+                <li class="breadcrumb-item active">Report</li>
             </ol>
     </div><!-- End Page Title -->
 
@@ -19,7 +19,7 @@
             <!-- Left side columns -->
             <div class="col-lg-12">
                 <div class="row">
-                    <?php foreach ($request as $r) :  ?>
+                    <?php foreach ($report as $r) :  ?>
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card">
                                 <div class="filter">
@@ -29,23 +29,21 @@
                                             <h6>Option</h6>
                                         </li>
 
-                                        <li><a id="<?= $r['id_family']; ?>" class="dropdown-item photo" href="" data-bs-toggle="modal" data-bs-target="#photoModal">Photo</a></li>
-                                        <li><a id="<?= $r['id_family']; ?>" class="dropdown-item approve" href="">Approve</a></li>
-                                        <li><a id="<?= $r['id_family']; ?>" class="dropdown-item reject" href="">Reject</a></li>
+                                        <li><a id="<?= $r['id_report']; ?>" class="dropdown-item photoReport" href="" data-bs-toggle="modal" data-bs-target="#photoReportModal">Photo</a></li>
+                                        <li><a id="<?= $r['id_report']; ?>" class="dropdown-item deleteReport" href="">Delete</a></li>
                                     </ul>
                                 </div>
 
                                 <div class="card-body">
-                                    <h5 class="card-title"><?= $r['head_family']; ?> <span>| <?= $r['reg']; ?></span></h5>
+                                    <h5 class="card-title"><?= $r['subject']; ?> <span>| <?= $r['dis']; ?></span></h5>
 
                                     <div class="d-flex align-items-center">
                                         <div class="col-md-4">
-                                            <img src="<?= base_url('assets/image/' . $r['picture']); ?>" class="img-fluid rounded-start">
+                                            <img src="<?= base_url('assets/reportimage/' . $r['photo']); ?>" class="img-fluid rounded-start">
                                         </div>
                                         <div class="card-body">
-                                            <div class="card-text">Family ID: <?= $r['id_family']; ?></div>
-                                            <div class="card-text">Region: <?= $r['reg']; ?></div>
-                                            <div class="card-text">Head Family: <?= $r['head_family']; ?></div>
+                                            <div class="card-text">ID: <?= $r['nik']; ?></div>
+                                            <div class="card-text">Description: <?= $r['description']; ?></div>
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +57,7 @@
     </section>
 
 </main><!-- End #main -->
-<div class="modal fade modal-xl" id="photoModal" tabindex="-1">
+<div class="modal fade modal-xl" id="photoReportModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

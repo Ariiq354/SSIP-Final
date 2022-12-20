@@ -20,7 +20,7 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= base_url('admin'); ?>">
+                <a class="nav-link collapsed" href="<?= base_url('admin/report'); ?>">
                     <i class="bi bi-exclamation-square"></i>
                     <span>Report</span>
                 </a>

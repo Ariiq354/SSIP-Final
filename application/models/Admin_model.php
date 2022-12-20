@@ -28,4 +28,24 @@ class Admin_model extends CI_Model
         $query = $this->db->get();
         return $query->row_array();
     }
+
+    public function report()
+    {
+        $this->db->select('*, disaster.name as dis');
+        $this->db->from('report');
+        $this->db->join('disaster', 'disaster.id_disaster = report.id_disaster');
+        $this->db->where('is_active', 0);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function reportbyId($id)
+    {
+        $this->db->select('*, disaster.name as dis');
+        $this->db->from('report');
+        $this->db->join('disaster', 'disaster.id_disaster = report.id_disaster');
+        $this->db->where('id_report', $id);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }

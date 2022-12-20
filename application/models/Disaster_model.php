@@ -8,6 +8,15 @@ class Disaster_model extends CI_Model
         parent::__construct();
     }
 
+    public function getDisaster()
+    {
+        $this->db->select('*, disaster.name as disasname, region.name as reg');
+        $this->db->from('disaster');
+        $this->db->join('region', 'disaster.id_region = region.id_region');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function victim($id)
     {
         $this->db->select('*');
