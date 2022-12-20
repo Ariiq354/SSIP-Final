@@ -26,6 +26,13 @@
                 </a>
             </li><!-- End Dashboard Nav -->
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= base_url('admin/disaster'); ?>">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <span>Disaster</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
         <?php endif; ?>
 
         <li class="nav-heading">Pages</li>

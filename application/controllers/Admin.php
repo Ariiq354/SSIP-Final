@@ -62,4 +62,13 @@ class Admin extends CI_Controller
 
         echo json_encode($query);
     }
+
+    public function disaster()
+    {
+        $data['user'] = $this->user->getUser($this->session->userdata('username'));
+        $data['province'] = $this->dashboard->province();
+        $this->load->view('template/header');
+        $this->load->view('admin/disaster', $data);
+        $this->load->view('template/footer');
+    }
 }

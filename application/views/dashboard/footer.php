@@ -51,7 +51,7 @@
                         } else if (item['name'] == "Volcano") {
                             logo = "bx bxs-landscape";
                         } else if (item['name'] == "Tornado") {
-                            logo = "bx bxl-jquery";
+                            logo = "bi bi-tornado";
                         }
                         $(".place").append(`<div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 feed" data-aos="zoom-in" data-aos-delay="100">
                             <div class="icon-box iconbox-blue">
