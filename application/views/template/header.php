@@ -39,6 +39,10 @@
             font-size: .875em;
             color: #dc3545;
         }
+
+        #upload {
+            display: none
+        }
     </style>
 </head>
 

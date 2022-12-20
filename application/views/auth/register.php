@@ -24,15 +24,18 @@
                                 <form class="row g-3 needs-validation" method="POST" action="<?= base_url('auth/register'); ?>" enctype="multipart/form-data" novalidate>
                                     <div class="col-12">
                                         <label for="yourName" class="form-label">Family ID</label>
-                                        <input type="text" name="familyId" class="form-control" id="familyId" required>
+                                        <input type="text" name="familyId" class="form-control" id="familyId" value="<?= set_value('familyId'); ?>" required>
                                         <div class="invalid-feedback">Please, enter your family id!</div>
+                                        <?= form_error('familyId', '<div class="invalid">', '</div>') ?>
                                     </div>
 
                                     <div class="col-12">
                                         <label for="yourEmail" class="form-label">Provinsi</label>
                                         <select class="form-select" name="selectProvince" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                                             <?php foreach ($province as $p) : ?>
-                                                <option value="<?= $p['id_region']; ?>"><?= $p['name']; ?></option>
+                                                <option value="<?= $p['id_region']; ?>" <?php if ($p['id_region'] == set_value('selectProvince')) {
+                                                                                            echo 'selected';
+                                                                                        } ?>><?= $p['name']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -41,21 +44,21 @@
                                         <label for="yourUsername" class="form-label">Username</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                            <input type="text" name="username" class="form-control" id="username" required>
+                                            <input type="text" name="username" class="form-control" id="username" value="<?= set_value('username'); ?>" required>
                                             <div class="invalid-feedback">Please choose a username.</div>
-                                            <?= form_error('name', '<div class="invalid">', '</div>') ?>
+                                            <?= form_error('username', '<div class="invalid">', '</div>') ?>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="yourPassword" class="form-label">Family Identity Card</label>
+                                        <label for="file" class="form-label">Family Identity Card</label>
                                         <input type="file" name="picture" class="form-control" id="picture" required>
                                         <div class="invalid-feedback">Please upload your family identity card!</div>
                                     </div>
 
                                     <div class="col-12">
                                         <label for="yourPassword" class="form-label">Password</label>
-                                        <input type="password" name="password1" class="form-control" id="password1" required>
+                                        <input type="password" name="password" class="form-control" id="password" required>
                                         <div class="invalid-feedback">Please enter your password!</div>
                                     </div>
 
