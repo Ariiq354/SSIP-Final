@@ -31,7 +31,7 @@ class Dashboard extends CI_Controller
     {
         $data['disaster'] = $this->disaster->disaster($id);
         $data['victim'] = $this->disaster->victim($id);
-        $data['hidup'] = $this->disaster->report($id, 0);
+        $data['hidup'] = $this->disaster->report($id, 3);
         $data['hilang'] = $this->disaster->report($id, 1);
         $data['meninggal'] = $this->disaster->report($id, 2);
         $this->load->view('viewer/disaster_dashboard', $data);

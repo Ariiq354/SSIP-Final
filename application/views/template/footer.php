@@ -204,6 +204,53 @@
                 }
             })
         });
+
+        $('.photo').click(function() {
+            var id = $(this).attr('id')
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/getPhoto'); ?>",
+                data: {
+                    id: id
+                },
+                dataType: "JSON",
+                success: function(resp) {
+                    $('.photo').append(`<div class="photoImage">
+                    <img src="<?= base_url('assets/image/') ?>` + resp['request']['picture'] + `" alt="">
+                </div>`)
+                }
+            });
+        })
+
+        $('.reject').click(function() {
+            var id = $(this).attr('id')
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/reject'); ?>",
+                data: {
+                    id: id
+                },
+                dataType: "JSON",
+                success: function(resp) {
+                    location.reload();
+                }
+            });
+        })
+
+        $('.approve').click(function() {
+            var id = $(this).attr('id')
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/approve'); ?>",
+                data: {
+                    id: id
+                },
+                dataType: "JSON",
+                success: function(resp) {
+                    location.reload();
+                }
+            });
+        })
     });
 </script>
 

@@ -13,14 +13,14 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= base_url('user'); ?>">
+                <a class="nav-link collapsed" href="<?= base_url('admin/request'); ?>">
                     <i class="bi bi-person-check"></i>
                     <span>User Request</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= base_url('user'); ?>">
+                <a class="nav-link collapsed" href="<?= base_url('admin'); ?>">
                     <i class="bi bi-exclamation-square"></i>
                     <span>Report</span>
                 </a>
