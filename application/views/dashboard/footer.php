@@ -66,7 +66,7 @@
                             </div>
                         </div>`);
                     });
-                    console.log(resp['disaster']);
+                    // console.log(resp['disaster']);
                 }
             });
         });
