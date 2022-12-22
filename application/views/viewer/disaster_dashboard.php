@@ -269,7 +269,9 @@
                             </div>
                             <div class="form-group mt-3">
                                 <input type="text" class="form-control id_disaster" name="id_disaster" value="" hidden>
+
                                 <input type="text" class="form-control nik" name="nik" value="" hidden>
+                                <input type="text" class="form-control name" name="name" value="" hidden>
                                 <label for="name">Subject</label>
                                 <input type="text" class="form-control" name="subject" id="subject" required>
                             </div>

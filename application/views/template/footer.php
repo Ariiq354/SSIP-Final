@@ -297,6 +297,8 @@
                 success: function(resp) {
                     $('.id_disaster').val(resp['id_disaster']);
                     $('.nik').val(resp['nik']);
+                    $('.name').val(resp['name']);
+
                     $('#nik').append(`<div class="data mb-1">ID: ` + resp['nik'] + `</div>`);
                     $('#name').append(`<div class="data mb-1">Name: ` + resp['name'] + `</div>`);
                 }

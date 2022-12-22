@@ -63,6 +63,7 @@ class Dashboard extends CI_Controller
         }
         $data = array(
             'nik' => $this->input->post('nik'),
+            'name' => $this->input->post('name'),
             'id_disaster' => $this->input->post('id_disaster'),
             'photo' => $image,
             'subject' => $this->input->post('subject'),

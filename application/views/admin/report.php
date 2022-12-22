@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <h5 class="card-title"><?= $r['subject']; ?> <span>| <?= $r['dis']; ?></span></h5>
+                                    <h5 class="card-title"><?= $r['subject']; ?> <span>| <?= $r['dis']; ?>, <?= $r['reg'] ?></span></h5>
 
                                     <div class="d-flex align-items-center">
                                         <div class="col-md-4">

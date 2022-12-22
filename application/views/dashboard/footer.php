@@ -61,7 +61,7 @@
                                     </svg>
                                     <i class="` + logo + `"></i>
                                 </div>
-                                <h4>` + item['name'] + `</a></h4>
+                                <h4><a href="dashboard/view/` + item['id_disaster'] + `">` + item['name'] + `</a></h4>
                                 <p>Date: ` + item['date'] + `, Casualty: ` + item['casualty'] + `</p>
                             </div>
                         </div>`);

@@ -101,4 +101,11 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-primary alert-dismissable fade show" role="alert">Logout Succesful</div>');
         redirect('auth');
     }
+    public function usernavbar()
+    {
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('id_role');
+        $this->session->set_flashdata('message', '<div class="alert alert-primary alert-dismissable fade show" role="alert">Logout Succesful</div>');
+        redirect('dashboard');
+    }
 }
